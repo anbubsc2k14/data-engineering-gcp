@@ -1,0 +1,14 @@
+from pyspark import SparkContext, SparkConf
+
+# Create a SparkConf object to configure the Spark application
+conf = SparkConf().setAppName("MyApp").setMaster("local")
+
+# Create a SparkContext object
+sc = SparkContext(conf=conf)
+
+# Load a text file from HDFS into an RDD
+rdd = sc.textFile("hdfs://localhost:9000/path/to/file")
+
+# Print the contents of the RDD
+for line in rdd.collect():
+    print(line)
